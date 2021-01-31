@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:text="初始化雷达"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="initLidar"/>
+
+    <Button
+        android:text="开始接收数据"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startLidar"/>
+
+    <Button
+        android:text="结束接收数据"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="stopLidar"/>
+
+    <Button
+        android:text="反初始化"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="unInitLidar"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:id="@+id/lidarStateTv"
+        android:text="雷达状态："/>
+
+
+    <TextView
+        android:id="@+id/dataTv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="100dp"/>
+</LinearLayout>
