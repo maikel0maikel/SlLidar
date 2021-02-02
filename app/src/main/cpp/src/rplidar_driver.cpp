@@ -1820,10 +1820,10 @@ u_result RPlidarDriverImplCommon::stop(_u32 timeout)
 u_result RPlidarDriverImplCommon::grabScanData(rplidar_response_measurement_node_t * nodebuffer, size_t & count, _u32 timeout)
 {
     DEPRECATED_WARN("grabScanData()", "grabScanDataHq()");
-	long flag = _dataEvt.wait(timeout);
-    switch (flag)
+
+    switch (_dataEvt.wait(timeout))
     {
-    case rp::hal::Event::EVENT_TIMEOUT:
+    case (unsigned long)rp::hal::Event::EVENT_TIMEOUT:
         count = 0;
         return RESULT_OPERATION_TIMEOUT;
     case rp::hal::Event::EVENT_OK:
@@ -1850,10 +1850,9 @@ u_result RPlidarDriverImplCommon::grabScanData(rplidar_response_measurement_node
 
 u_result RPlidarDriverImplCommon::grabScanDataHq(rplidar_response_measurement_node_hq_t * nodebuffer, size_t & count, _u32 timeout)
 {
-	long flag = _dataEvt.wait(timeout);
-    switch (flag)
+    switch (_dataEvt.wait(timeout))
     {
-    case rp::hal::Event::EVENT_TIMEOUT:
+    case (unsigned long)rp::hal::Event::EVENT_TIMEOUT:
         count = 0;
         return RESULT_OPERATION_TIMEOUT;
     case rp::hal::Event::EVENT_OK:
@@ -2220,7 +2219,7 @@ u_result RPlidarDriverImplCommon::startMotor()
         }
     }
     else {
-        setLidarSpinSpeed(600);//set default rpm to tof lidar
+      return  setLidarSpinSpeed(600);//set default rpm to tof lidar
     }
 
 }

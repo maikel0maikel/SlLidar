@@ -188,7 +188,7 @@ bool raw_serial::open(const char * portname, uint32_t baudrate, uint32_t flags)
 
     tcflush(serial_fd, TCIFLUSH);
 
-    if (fcntl(serial_fd, F_SETFL, 0))//FNDELAY
+    if (fcntl(serial_fd, F_SETFL))//FNDELAY
     {
         close();
         return false;

@@ -61,5 +61,4 @@
 #include <time.h>
 
 #include "timer.h"
- 
-//int pthread_cancel(pthread_t thread);
+

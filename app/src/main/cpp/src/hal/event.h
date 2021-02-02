@@ -33,9 +33,6 @@
  */
 
 #pragma once
-#define HAL_EVENT_OK 1
-#define HAL_EVENT_TIMEOUT  -1
-#define HAL_EVENT_FAILED 0
 namespace rp{ namespace hal{
 
 class Event
@@ -106,13 +103,13 @@ public:
         case WAIT_FAILED:
             return EVENT_FAILED;
         case WAIT_OBJECT_0:
-            return HAL_EVENT_OK;
+            return EVENT_OK;
         case WAIT_TIMEOUT:
-            return HAL_EVENT_TIMEOUT;
+            return EVENT_TIMEOUT;
         }
-        return HAL_EVENT_OK;
+        return EVENT_OK;
 #else
-        unsigned long ans = HAL_EVENT_OK;
+        unsigned long ans = EVENT_OK;
         pthread_mutex_lock( &_cond_locker );
 
         if ( !_is_signalled )

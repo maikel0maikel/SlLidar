@@ -167,7 +167,8 @@ u_result SocketAddress::getAddressAsString(char * buffer, size_t buffersize) con
 
         break;
     }
-    return ((long)ans)<=0?RESULT_OPERATION_FAIL:RESULT_OK;
+    long result = (long)*ans;
+    return result<=0?RESULT_OPERATION_FAIL:RESULT_OK;
 }
 
 

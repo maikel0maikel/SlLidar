@@ -4,7 +4,7 @@ class LidarHelper {
    private var  nativePtr:Long = 0
    private var mLidarListener:OnLidarListener? = null
     init {
-        System.loadLibrary("sl_lidar")
+        System.loadLibrary("native-lib")
     }
 
     fun initLidar():Boolean{
@@ -28,13 +28,6 @@ class LidarHelper {
         stop(nativePtr)
     }
 
-    fun unInitLidar(){
-        if (nativePtr==0.toLong()){
-            mLidarListener?.onState(-1)
-            return
-        }
-        unInit(nativePtr)
-    }
 
     fun setOnLidarListener(l:OnLidarListener){
         mLidarListener = l
@@ -47,10 +40,12 @@ class LidarHelper {
     fun onDataResult(flag:Int,degree:Float,distance:Double,quality:Int){
         mLidarListener?.onDataResult(flag,degree,distance,quality)
     }
+    fun onDeviceInfo(model:Int,firmwareVersion:Int,hardwareVersion:Int,serialnum:String){
+        mLidarListener?.onDeviceInfo(model,firmwareVersion,hardwareVersion,serialnum)
+    }
 
     private external fun init():Long
 
-    private external fun unInit(nativePtr:Long)
 
     private external fun start(nativePtr:Long)
 
@@ -60,5 +55,6 @@ class LidarHelper {
     interface OnLidarListener{
         fun onState(state:Int)
         fun onDataResult(flag:Int,degree:Float,distance:Double,quality:Int)
+        fun onDeviceInfo(model:Int,firmwareVersion:Int,hardwareVersion:Int,serialnum:String)
     }
 }

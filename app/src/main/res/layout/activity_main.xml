@@ -21,17 +21,22 @@
         android:onClick="startLidar"/>
 
     <Button
-        android:text="结束接收数据"
+        android:text="结束雷达接收数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="stopLidar"/>
 
     <Button
-        android:text="反初始化"
+        android:text="开始can接收数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="unInitLidar"/>
+        android:onClick="startCan"/>
 
+    <Button
+        android:text="结束can接收数据"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="stopCan"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +45,12 @@
         android:id="@+id/lidarStateTv"
         android:text="雷达状态："/>
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:id="@+id/lidarDeviceInfoTv"
+        android:text="雷达设备信息："/>
     <TextView
         android:id="@+id/dataTv"
         android:layout_width="match_parent"

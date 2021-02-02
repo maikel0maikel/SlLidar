@@ -36,8 +36,6 @@
 
 #include <sched.h>
 
-
-
 namespace rp{ namespace hal{
 
 Thread Thread::create(thread_proc_t proc, void * data)
@@ -56,7 +54,7 @@ u_result Thread::terminate()
 {
     if (!this->_handle) return RESULT_OK;
     
-    return  RESULT_OK;//pthread_cancel((pthread_t)this->_handle)==0?RESULT_OK:RESULT_OPERATION_FAIL;
+    return pthread_kill((pthread_t)this->_handle,SIGUSR1)==0?RESULT_OK:RESULT_OPERATION_FAIL;
 }
 
 u_result Thread::setPriority( priority_val_t p)

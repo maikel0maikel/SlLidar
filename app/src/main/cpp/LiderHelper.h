@@ -5,11 +5,15 @@
 #ifndef LIDARTEST_LIDERHELPER_H
 #define LIDARTEST_LIDERHELPER_H
 
+#include <sstream>
+#include <fstream>
+#include <string>
 #include <pthread.h>
 #include <rplidar.h>
 #include <rptypes.h>
 #include <jni.h>
 #include "JavaCallbacker.h"
+
 class LiderHelper {
 
 public:
@@ -17,23 +21,19 @@ public:
 
     ~LiderHelper();
 
-    int init();
-
-    void unInit();
-
     void start();
 
     void stop();
 
-    void startConnect();
+    void startConnect(std::string dev_vid = "10c4ea60");
 
 private:
+
     int connect = 0;
     int isStart = 0;
     pthread_t mLidarTask;//准备线程id
-    rp::standalone::rplidar::RPlidarDriver* lidar;
     JavaCallbacker* lidarCallbacker;
-    int mUnInitFlag;
+
 };
 
 
